@@ -1,0 +1,122 @@
+﻿<DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Latent Module</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="../Pages/style.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="../Pages/home.html"><img class="imagen" src="../imgs/home.png" /> Home</a>
+            <div class="dropdown">
+                <img class="imagen" src="../imgs/separator.png" />
+                <button class="dropbtn" onclick="myFunction()">
+                    <img class="imagen" src="../imgs/fingerPrint.png" />
+                    Modules
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">---</a>
+                    <a href="#">---</a>
+                    <a href="#">---</a>
+                    <a href="../Pages/LatentModule.html">Latent Identification</a>
+                    <a href="../Pages/LatentReport.html">Report</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function (e) {
+                if (!e.target.matches('.dropbtn')) {
+                    var myDropdown = document.getElementById("myDropdown");
+                    if (myDropdown.classList.contains('show')) {
+                        myDropdown.classList.remove('show');
+                    }
+                }
+            }
+        </script>
+
+        <div class="row">
+            <div>
+                <div class="col-4"></div>
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <div class="topnav">
+                        <div class="search-container">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 grid-item" id="parte">
+                <div class="col-2 grid-item-report-id">ID</div>
+                <div class="col-4 grid-item-report-id">USER</div>
+                <div class="col-3 grid-item-report-id">SEARCHED</div>
+                <div class="col-3 grid-item-report-id">MATCHED</div>
+                <div class="col-2 grid-item-report">1</div>
+                <div class="col-4 grid-item-report">David Fernandez Nava</div>
+                <div class="col-3 grid-item-report">1</div>
+                <div class="col-3 grid-item-report">1</div>
+                <div class="col-2 grid-item-report">2</div>
+                <div class="col-4 grid-item-report">Mario Lagunes Nava</div>
+                <div class="col-3 grid-item-report">10</div>
+                <div class="col-3 grid-item-report">5</div>
+                <div class="col-2 grid-item-report">3</div>
+                <div class="col-4 grid-item-report">Luis Daniel Rivero Sosa</div>
+                <div class="col-3 grid-item-report">4</div>
+                <div class="col-3 grid-item-report">1</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button class="styleInputMatch" id="Cancelar" onclick="Cancelar()">Cancel</button>
+                <input type="button" class="styleInputReport" id="Imprimir" onclick="Aceptar()" value="Aceptar">
+            </div>
+        </div>
+
+        <script>
+
+            function Cancelar() {
+                location = "../Pages/LatentModule.html";
+            }
+
+            /*function imprimir() {
+                var ficha = document.getElementById('parte');
+                ventana = window.open("");
+                var css = ventana.document.createElement("link");
+                css.setAttribute("href", "style.css");
+                css.setAttribute("rel", "stylesheet");
+                css.setAttribute("type", "text/css");
+                ventana.document.write(ficha.outerHTML);
+
+                ventana.document.head.appendChild(css);
+                if (ventana.document.readyState) {
+                    console.log('aqui estoy');
+                    ventana.print();
+                }
+                ventana.document.close();
+                ventana.close;
+            }*/
+
+            function Aceptar() {
+                location = "../Pages/LatentModule.html";
+            }
+        </script>
+
+    </body>
+</html>
