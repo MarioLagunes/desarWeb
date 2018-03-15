@@ -39,227 +39,98 @@
         </script>
 
         <div class="row">
-            <div class="col-12">
-                <select class="positionOptionsResult" id="region" name="matches" required>
-                    <option id="yourMinutia" class="positionOptionsResult" value="minutiaOriginal">Your minuta</option>
-                    <option id="opcion1" value="optionOne" onselect="crearImagenLabelOne()">Option 1</option>
+            <div class="col-11">
+                <select class="positionOptionsResult" id="region" onchange="cargarMatch(this.value);" required>
+                    <option value="minutiaOriginal">Your minuta</option>
+                    <option value="optionOne">Option 1</option>
                     <option value="optionTwo">Option 2</option>
                     <option value="optionThree">Option 3</option>
                     <option value="optionFour">Option 4</option>
-                    <option value="..." onclick="#">...</option>
+                    <option value="select..." selected="selected">Select...</option>
                 </select>
+            </div>
+            <div class="col-1">
+                <button class="styleInputMatch" disabled id="hazMatch" onclick="quieresMatch()">Match</button>
             </div>
         </div>
         <div class="row">
             <div class="col-12" id="resultadoImagen"></div>
         </div>
-
-        <!--Este código no es funcional, hay que borrarlo una vez que quede todo
-    <div class="row">
-        <div>
-            <div class="col-4"><label class="positionLabelResult" for="region">Your Munitia</label></div>
-            <div class="col-4" id="labelMatch"></div>
-            <div class="col-4"><label class="positionLabelMatch" for="region">Matches</label></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <img class="imagenResult" src="../imgs/minutiaDefault.png" />
-        </div>
-        <div class="col-4" id="resultadoImagen">
-            <!--<img class="imagenResult" id="resultado">
-        </div>
-        <div class="col-4 grid-item">
-            <div class="grid-item" id="option1"><button class="botones" onclick="crearImagenLabelOne()" id="optionOne">Option 1</button></div>
-            <div class="grid-item" id="option2"><button class="botones" onclick="crearImagenLabelTwo()" id="optionTwo">Option 2</button></div>
-            <div class="grid-item" id="option3"><button class="botones" onclick="crearImagenLabelThree()" id="optionThree">Option 3</button></div>
-            <div class="grid-item" id="option4"><button class="botones" onclick="crearImagenLabelFour()" id="optionFour">Option 4</button></div>
-            <div class="grid-item" id="---"><button class="botones" onclick="">---</button></div>
-        </div>
+        <div class="row">
+            <div class="col-12" id="infoMatch"></div>
         </div>
         <div class="row">
-            <div class="col-4">
-                <select class="positionOptionsResult" id="region" name="region" required disabled>
-                    <option value="thumb">Thumb</option>
-                    <option value="index">Index</option>
-                    <option value="middle">Middle</option>
-                    <option value="ring">Ring</option>
-                    <option value="pincky">Pincky</option>
-                    <option value="palm">Palm</option>
-                    <option value="unknown">Unknown</option>
-                </select>
-                <select class="positionSideResult" id="side" name="side" required disabled>
+            <div>
+                <div class="col-6"><label class="positionLabel" for="region">Region:</label></div>
+                <div class="col-6">
+                    <select class="positionOptions" id="region" name="region" required disabled>
+                        <option value="thumb">Thumb</option>
+                        <option value="index">Index</option>
+                        <option value="middle">Middle</option>
+                        <option value="ring">Ring</option>
+                        <option value="pincky">Pincky</option>
+                        <option value="palm">Palm</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6"><label class="positionLabelSide" for="side">Side:</label></div>
+            <div class="col-6">
+                <select class="positionSide" id="side" name="side" required disabled>
                     <option value="right">Right</option>
                     <option value="left">Left</option>
                     <option value="both">Both</option>
                 </select>
             </div>
-            <div class="col-4" id="labelNombreMatch"></div>
-            <div class="col-4">
-                <button class="styleInputMatch" disabled id="hazMatch" onclick="quieresMatch()">Match</button>
-            </div>
-        </div>-->
+        </div>
 
         <script>
-            var btnOpcion1 = document.getElementById('opcion1');
-            var btnOpcion2 = document.getElementById('yourMinutia');
-            var btnOpcion3 = document.getElementById('optionThree');
-            var btnOpcion4 = document.getElementById('optionFour');
-            var flag = 0;
-            var resultImg = document.getElementById('resultadoImagen');
-            var labelMatch = document.getElementById('labelMatch');
-            var labelNombreMatch = document.getElementById('labelNombreMatch');
-            var imagenResultado = document.createElement('img');
-            var labelResultado = document.createElement('label');
-            var labelNombreResultado = document.createElement('label');
-            var textLabel = "";
-            var textNombre = "";
-            
-            /*if (btnOpcion1.getAttribute('value') == 'minutiaOriginal') {
-                crearYourMinutia();
-            }
-            else if (btnOpcion1.getAttribute('value') == 'optionOne') {
-                crearImagenLabelOne();
-            }*/
-            
-            
-            function crearYourMinutia() {
-                if (flag != 0) {
-                    EliminarOpcion();
+            function cargarMatch(valor) {
+                if (valor == 'minutiaOriginal') {
+                    document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src="../imgs/minutiaDefault.png"/>';
+                    document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter"> </label>';
+                    ponBotonesDisabled();
                 }
-                imagenResultado.setAttribute("class", "imagenResult");
-                imagenResultado.setAttribute("src", "../imgs/minutiaDefault.png");
-                labelResultado.setAttribute("class", "positionLabelCenter");
-                labelNombreResultado.setAttribute("class", "positionNombreCenter");
-                /*textLabel = document.createTextNode("Option 1");
-                textNombre = document.createTextNode("Mario Lagunes Nava, 22 years old");
-                resultImg.appendChild(imagenResultado);
-                labelMatch.appendChild(labelResultado);
-                labelResultado.appendChild(textLabel);
-                labelNombreMatch.appendChild(labelNombreResultado);
-                labelNombreResultado.appendChild(textNombre);*/
-                /*flag = 1;
-                ponBotones();
-                if (flag == 1) {
-                    btnOpcion1.disabled = true;
-                    btnOpcion2.disabled = false;
-                    btnOpcion3.disabled = false;
-                    btnOpcion4.disabled = false;
-                }*/
-            }
+                else if (valor == 'optionOne') {
+                    document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src="../imgs/minutiaMatch.png"/>';
+                    document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter">Mario Lagunes Nava, 22 years old.</label>';
+                    ponBotones();
 
-            function crearImagenLabelOne() {
-                if (flag != 0) {
-                    EliminarOpcion();
                 }
-                imagenResultado.setAttribute("class", "imagenResult");
-                imagenResultado.setAttribute("src", "../imgs/minutiaMatch.png");
-                labelResultado.setAttribute("class", "positionLabelCenter");
-                labelNombreResultado.setAttribute("class", "positionNombreCenter");
-                //textLabel = document.createTextNode("Option 1");
-                //textNombre = document.createTextNode("Mario Lagunes Nava, 22 years old");
-                resultImg.appendChild(imagenResultado);
-                //labelMatch.appendChild(labelResultado);
-                //labelResultado.appendChild(textLabel);
-               // labelNombreMatch.appendChild(labelNombreResultado);
-                //labelNombreResultado.appendChild(textNombre);
-                /*flag = 1;
-                ponBotones();
-                if (flag == 1) {
-                    btnOpcion1.disabled = true;
-                    btnOpcion2.disabled = false;
-                    btnOpcion3.disabled = false;
-                    btnOpcion4.disabled = false;
-                }*/
-            }
-
-            function crearImagenLabelTwo() {
-                if (flag != 0) {
-                    EliminarOpcion();
+                else if (valor == 'optionTwo') {
+                    document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src="../imgs/minutiaDefault.png"/>';
+                    document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter">Luis Daniel Rivero Sosa, 22 years old.</label>';
+                    ponBotones();
                 }
-                imagenResultado.setAttribute("class", "imagenResult");
-                imagenResultado.setAttribute("src", "../imgs/minutiaDefault.png");
-                labelResultado.setAttribute("class", "positionLabelCenter");
-                labelNombreResultado.setAttribute("class", "positionNombreCenter");
-                textLabel = document.createTextNode("Option 2");
-                textNombre = document.createTextNode("Luis Daniel Rivero Sosa, 22 years old");
-                resultImg.appendChild(imagenResultado);
-                labelMatch.appendChild(labelResultado);
-                labelResultado.appendChild(textLabel);
-                labelNombreMatch.appendChild(labelNombreResultado);
-                labelNombreResultado.appendChild(textNombre);
-                flag = 2;
-                ponBotones();
-                if (flag == 2) {
-                    btnOpcion1.disabled = false;
-                    btnOpcion2.disabled = true;
-                    btnOpcion3.disabled = false;
-                    btnOpcion4.disabled = false;
+                else if (valor == 'optionThree') {
+                    document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src="../imgs/minutiaMatch.png"/>';
+                    document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter">Fabiola Gómez Peña, 21 years old.</label>';
+                    ponBotones();
                 }
-            }
-
-            function crearImagenLabelThree() {
-                if (flag != 0) {
-                    EliminarOpcion();
+                else if (valor == 'optionFour') {
+                    document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src="../imgs/minutiaDefault.png"/>';
+                    document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter">Yedith Jou Lamberstone Peréz, 20 years old</label>';
+                    ponBotones();
                 }
-                imagenResultado.setAttribute("class", "imagenResult");
-                imagenResultado.setAttribute("src", "../imgs/minutiaMatch.png");
-                labelResultado.setAttribute("class", "positionLabelCenter");
-                labelNombreResultado.setAttribute("class", "positionNombreCenter");
-                textLabel = document.createTextNode("Option 3");
-                textNombre = document.createTextNode("Fabiola Gómez Peña, 21 years old");
-                resultImg.appendChild(imagenResultado);
-                labelMatch.appendChild(labelResultado);
-                labelResultado.appendChild(textLabel);
-                labelNombreMatch.appendChild(labelNombreResultado);
-                labelNombreResultado.appendChild(textNombre);
-                flag = 3;
-                ponBotones();
-                if (flag == 3) {
-                    btnOpcion1.disabled = false;
-                    btnOpcion2.disabled = false;
-                    btnOpcion3.disabled = true;
-                    btnOpcion4.disabled = false;
+                else if (valor == 'select...') {
+                    document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult""/>';
+                    document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter"></label>';
+                    ponBotonesDisabled();
                 }
-            }
-
-            function crearImagenLabelFour() {
-                if (flag != 0) {
-                    EliminarOpcion();
-                }
-                imagenResultado.setAttribute("class", "imagenResult");
-                imagenResultado.setAttribute("src", "../imgs/minutiaDefault.png");
-                labelResultado.setAttribute("class", "positionLabelCenter");
-                labelNombreResultado.setAttribute("class", "positionNombreCenter");
-                textLabel = document.createTextNode("Option 4");
-                textNombre = document.createTextNode("Yedith Jou Lamberstone Peréz, 20 years old");
-                resultImg.appendChild(imagenResultado);
-                labelMatch.appendChild(labelResultado);
-                labelResultado.appendChild(textLabel);
-                labelNombreMatch.appendChild(labelNombreResultado);
-                labelNombreResultado.appendChild(textNombre);
-                flag = 4;
-                ponBotones();
-                if (flag == 4) {
-                    btnOpcion1.disabled = false;
-                    btnOpcion2.disabled = false;
-                    btnOpcion3.disabled = false;
-                    btnOpcion4.disabled = true;
-                }
-            }
-
-            function EliminarOpcion() {
-                labelNombreResultado.removeChild(textNombre);
-                labelNombreMatch.removeChild(labelNombreResultado);
-                labelResultado.removeChild(textLabel);
-                labelMatch.removeChild(labelResultado);
-                resultImg.removeChild(imagenResultado);
 
             }
 
             function ponBotones() {
                 var but = document.getElementById("hazMatch");
                 but.disabled = false;
+            }
+
+            function ponBotonesDisabled() {
+                var but = document.getElementById('hazMatch');
+                but.disabled = true;
             }
 
             function quieresMatch() {
@@ -274,11 +145,5 @@
                 }
             }
         </script>
-
-
-
-
-
-
     </body>
 </html>

@@ -98,13 +98,14 @@
     margin: auto;
     display: block;
     font-size: 32px;
+    float: right
 }
 
 .positionOptions {
     padding: 0;
     margin: auto;
     display: block;
-    float: right;
+    float: left;
     font-size: 32px;
 }
 
@@ -184,6 +185,76 @@
     display: block;
 }
 
+.imagenResult {
+    padding: 0;
+    margin: auto;
+    display: block;
+}
+
+.styleInputMatch {
+    padding: 0;
+    margin: auto;
+    display: block;
+    font-size: 32px;
+    float: right;
+}
+
+.styleInputReport {
+    padding: 0;
+    margin: auto;
+    display: block;
+    font-size: 32px;
+    float: left;
+}
+
+.gridNAME {
+    background-color: #fff;
+    border: 1px solid black;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: black;
+}
+
+.topnavSearch {
+    overflow: hidden;
+}
+
+    .topnavSearch .search-container {
+        float: right;
+    }
+
+    .topnavSearch input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        font-size: 25px;
+        border: 1px solid black;
+    }
+
+    .topnavSearch .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 12px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 25px;
+        border: none;
+        cursor: pointer;
+    }
+
+        .topnavSearch .search-container button:hover {
+            background: #ccc;
+        }
+
+.plano {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #d9d9d9;
+}
 
 .show {
     display: block;
@@ -302,7 +373,7 @@
 [class*="col-"] {
     float: left;
     padding: 15px;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 @media screen and (max-width: 800px) {
@@ -334,12 +405,12 @@
     }
 
     .positionLabel {
-        float: left;
+        float: right;
         font-size: 20px;
     }
 
     .positionLabelSide {
-        float: left;
+        float: right;
         font-size: 20px;
     }
 
@@ -377,6 +448,22 @@
     .styleInputCan {
         float: left;
         font-size: 20px;
+    }
+
+    .styleInputMatch {
+        padding: 0;
+        margin: auto;
+        display: block;
+        font-size: 20px;
+        float: right;
+    }
+
+    .styleInputReport {
+        padding: 0;
+        margin: auto;
+        display: block;
+        font-size: 20px;
+        float: left;
     }
 
     .positionLabelResult {
@@ -417,6 +504,84 @@
         margin: auto;
         display: block;
         text-align: center;
+    }
+
+    .imagenResult {
+        padding: 0;
+        margin: auto;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .styleInputMatch {
+        padding: 0;
+        margin: auto;
+        display: block;
+        font-size: 20px;
+        float: right;
+    }
+
+    .topnavSearch input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        font-size: 15px;
+        border: 1px solid black;
+        text-align:center;
+    }
+
+    .topnavSearch .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 12px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .grid-item-report-id {
+        background-color: #fff;
+        border: 2px solid black;
+        padding: 20px;
+        font-size: 15px;
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+        color: black;
+        font-weight: 400
+    }
+
+    .grid-item-report {
+        background-color: #fff;
+        border: 1px solid black;
+        padding: 0;
+        font-size: 10px;
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+        color: black;
+    }
+
+    .gridID{
+        font-size: 10px;
+        padding: 0;
+        margin: auto;
+        display: block;
+    }
+
+    .gridNAME {
+        background-color: #fff;
+        border: 1px solid black;
+        padding: 0;
+        font-size: 10px;
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+        color: black;
     }
 
     

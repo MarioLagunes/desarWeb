@@ -40,23 +40,23 @@
 
         <div class="row">
             <div>
-                
                 <div class="col-6"><label class="positionLabel" for="region">Region:</label></div>
-                <div class="col-6"><label class="positionLabelSide" for="side">Side:</label></div>
+                <div class="col-6">
+                    <select class="positionOptions" id="region" name="region" required>
+                        <option value="thumb">Thumb</option>
+                        <option value="index">Index</option>
+                        <option value="middle">Middle</option>
+                        <option value="ring">Ring</option>
+                        <option value="pincky">Pincky</option>
+                        <option value="palm">Palm</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
-                <select class="positionOptions" id="region" name="region" required>
-                    <option value="thumb">Thumb</option>
-                    <option value="index">Index</option>
-                    <option value="middle">Middle</option>
-                    <option value="ring">Ring</option>
-                    <option value="pincky">Pincky</option>
-                    <option value="palm">Palm</option>
-                    <option value="unknown">Unknown</option>
-                </select>
-            </div>
+            <div class="col-6"><label class="positionLabelSide" for="side">Side:</label></div>
             <div class="col-6">
                 <select class="positionSide" id="side" name="side" required>
                     <option value="right">Right</option>
@@ -67,10 +67,8 @@
         </div>
 
         <div class="row">
-            
-            <div class="col-12">
-                <div id="lienzo"></div>
-            </div>
+
+            <div class="col-12" id="lienzo"></div>
         </div>
         <div class="row">
             <div class="col-12">
@@ -82,10 +80,8 @@
             <div class="col-6"><button class="styleInputCon" id="btnContinue" disabled>Continue</button></div>
             <div class="col-6"><button class="styleInputCan" id="btnCancel" disabled>Cancel</button></div>
         </div>
-        
-        <script>
 
-            var scale;
+        <script>
             function crearCanvas() {
                 var canvasDiv = document.getElementById("lienzo");
                 canvas = document.createElement('canvas');
@@ -96,10 +92,8 @@
                     canvas = G_vmlCanvasManager.initElement(canvas);
                 }
                 context = canvas.getContext("2d");
-                
-                
-
             }
+
             var posx;
             var posy;
             var posix;
@@ -121,7 +115,9 @@
             var listX2 = [];
             var listY2 = [];
             var img = new Image();
-            //var scale;
+            var width = 0;
+            var height = 0;
+
             function init() {
 
                 inputFile.addEventListener('change', mostrarImagen, false);
@@ -130,12 +126,9 @@
             function mostrarImagen(event) {
                 canvas.style.display = "block";
                 document.getElementById("canvas").style.overflowY = "hidden";
-                
+                img.setAttribute('class', 'styleInputImg');
                 var ctx = context;
-
-
                 if (ctx) {
-
                     var file = event.target.files[0];
                     var reader = new FileReader();
                     reader.onload = function (event) {
@@ -143,24 +136,21 @@
                     }
                     reader.readAsDataURL(file);
                     img.onload = function () {
-                        var width = this.width;
-                        var height = this.height;
-                        img.setAttribute('class','styleInputImg');
-                        //console.log(this.src);
+                        width = this.width;
+                        height = this.height;
+                        console.log("soy img " + this.width);
+                        console.log("soy canvas " + canvas.width);
                         src = this.src;
-                        canvas.setAttribute("width", width);
-                        canvas.setAttribute("height", height);
-                        
-                        //console.log(ctx);
-                       // ctx.scale(canvas.style.width = '100 %', canvas.style.height = "auto");
-                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        //canvas.setAttribute("width", width);
+                        //canvas.setAttribute("height", height);
+                        console.log("soy canvas actualizado " + canvas.width);
                         ctx.drawImage(img, (0), (0));
-                        
                     }
+                    console.log("soy canvas actualizado  por " + canvas.width);
                     canvas.setAttribute("onclick", "draw(event)");
-                    console.log();
                     inputFile.style.display = 'none';
-
                     var btnCancel = document.getElementById('btnCancel');
                     var btnAccept = document.getElementById('btnContinue');
                     btnAccept.disabled = false;
@@ -341,4 +331,4 @@
         </script>
 
     </body>
-</html>
+    </html>

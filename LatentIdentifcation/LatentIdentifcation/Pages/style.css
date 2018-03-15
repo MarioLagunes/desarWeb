@@ -314,15 +314,15 @@ canvas {
     /*border: 1px solid red;*/
 }
 
-.topnav {
+.topnavSearch {
     overflow: hidden;
 }
 
-    .topnav .search-container {
+    .topnavSearch .search-container {
         float: right;
     }
 
-    .topnav input[type=text] {
+    .topnavSearch input[type=text] {
         padding: 6px;
         margin-top: 8px;
         margin-bottom: 8px;
@@ -330,7 +330,7 @@ canvas {
         border: 1px solid black;
     }
 
-    .topnav .search-container button {
+    .topnavSearch .search-container button {
         float: right;
         padding: 6px 10px;
         margin-top: 12px;
@@ -341,7 +341,7 @@ canvas {
         cursor: pointer;
     }
 
-        .topnav .search-container button:hover {
+        .topnavSearch .search-container button:hover {
             background: #ccc;
         }
 
