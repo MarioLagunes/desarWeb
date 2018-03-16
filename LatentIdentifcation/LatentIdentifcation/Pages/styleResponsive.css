@@ -128,6 +128,7 @@
     padding: 0;
     margin: auto;
     display: block;
+    
 }
 
 .styleInputCon {
@@ -253,7 +254,7 @@
     width: 100%;
     margin: 0 auto;
     display: block;
-    border: 1px solid #d9d9d9;
+    
 }
 
 .show {
