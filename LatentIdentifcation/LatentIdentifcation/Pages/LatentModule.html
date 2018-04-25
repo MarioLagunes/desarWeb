@@ -43,7 +43,7 @@
                 <div class="col-6"><label class="positionLabel" for="region">Region:</label></div>
                 <div class="col-6">
                     <select class="positionOptions" id="region" name="region" required>
-                        <option value="thumb">Thumb</option>
+                        <option value="thumb" default>Thumb</option>
                         <option value="index">Index</option>
                         <option value="middle">Middle</option>
                         <option value="ring">Ring</option>
@@ -59,7 +59,7 @@
             <div class="col-6"><label class="positionLabelSide" for="side">Side:</label></div>
             <div class="col-6">
                 <select class="positionSide" id="side" name="side" required>
-                    <option value="right">Right</option>
+                    <option value="right" default>Right</option>
                     <option value="left">Left</option>
                     <option value="both">Both</option>
                 </select>
@@ -82,6 +82,9 @@
         </div>
 
         <script>
+            var selectedOption;
+            var selectedSide;
+            var variables;
             function crearCanvas() {
                 var canvasDiv = document.getElementById("lienzo");
                 canvas = document.createElement('canvas');
@@ -92,6 +95,17 @@
                     canvas = G_vmlCanvasManager.initElement(canvas);
                 }
                 context = canvas.getContext("2d");
+                var region = document.getElementById('region');
+                region.addEventListener('change',
+                    function () {
+                        selectedOption = this.options[region.selectedIndex];
+                        //console.log(selectedOption.value + ': ' + selectedOption.text);
+                    });
+                var side = document.getElementById('side');
+                side.addEventListener('change', function () {
+                    selectedSide = this.options[side.selectedIndex];
+                    //console.log(selectedSide.value + ': ' + selectedSide.text);
+                });
             }
 
             var posx;
@@ -101,6 +115,9 @@
             var isAngle = false;
             var arrayX = [];
             var arrayY = [];
+            var lisX = [];
+            var lisY = [];
+
             var borrar = false;
             var cont = 0;
             var inputFile = document.getElementById('inputFile1');
@@ -109,6 +126,7 @@
             var posx;
             var posy;
             var src;
+            var codigo;
             //listas que guardan los puntos
             var listX1 = [];
             var listY1 = [];
@@ -117,50 +135,151 @@
             var img = new Image();
             var width = 0;
             var height = 0;
+            var btnCancel;
+            var btnAccept;
 
             function init() {
-
+                
                 inputFile.addEventListener('change', mostrarImagen, false);
             }
 
+            function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
+
+                if (arguments.length === 2) {
+                    x = y = 0;
+                    w = ctx.canvas.width;
+                    h = ctx.canvas.height;
+                }
+
+                /// default offset is center
+                offsetX = typeof offsetX === 'number' ? offsetX : 0.5;
+                offsetY = typeof offsetY === 'number' ? offsetY : 0.5;
+
+                /// keep bounds [0.0, 1.0]
+                if (offsetX < 0) offsetX = 0;
+                if (offsetY < 0) offsetY = 0;
+                if (offsetX > 1) offsetX = 1;
+                if (offsetY > 1) offsetY = 1;
+
+                var iw = img.width,
+                    ih = img.height,
+                    r = Math.min(w / iw, h / ih),
+                    nw = iw * r,   /// new prop. width
+                    nh = ih * r,   /// new prop. height
+                    cx, cy, cw, ch, ar = 1;
+
+                /// decide which gap to fill    
+                if (nw < w) ar = w / nw;
+                if (nh < h) ar = h / nh;
+                nw *= ar;
+                nh *= ar;
+
+                /// calc source rectangle
+                cw = iw / (nw / w);
+                ch = ih / (nh / h);
+
+                cx = (iw - cw) * offsetX;
+                cy = (ih - ch) * offsetY;
+
+                /// make sure source rectangle is valid
+                if (cx < 0) cx = 0;
+                if (cy < 0) cy = 0;
+                if (cw > iw) cw = iw;
+                if (ch > ih) ch = ih;
+
+                /// fill image in dest. rectangle
+                ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
+            }
+
             function mostrarImagen(event) {
+                console.log("soy input" + inputFile.files[0]);
                 canvas.style.display = "block";
                 document.getElementById("canvas").style.overflowY = "hidden";
-                img.setAttribute('class', 'styleInputImg');
+                var urls = "";
                 var ctx = context;
                 if (ctx) {
+                    //console.log("soy if ctx");
                     var file = event.target.files[0];
                     var reader = new FileReader();
+                    codigo = "hola";
                     reader.onload = function (event) {
+                        
                         img.src = event.target.result;
+                        console.log(img.src);
+                        
                     }
                     reader.readAsDataURL(file);
                     img.onload = function () {
-                        width = this.width;
-                        height = this.height;
-                        console.log("soy img " + this.width);
-                        console.log("soy canvas " + canvas.width);
-                        src = this.src;
-                        canvas.width = width;
-                        canvas.height = height;
-                        //canvas.setAttribute("width", width);
-                        //canvas.setAttribute("height", height);
-                        console.log("soy canvas actualizado " + canvas.width);
-                        ctx.drawImage(img, (0), (0));
+
+                        if (document.getElementById("lienzo").offsetWidth < img.width) {
+                            var width = document.getElementById("lienzo").offsetWidth;
+                            var diferenciaEnX = document.getElementById("lienzo").offsetWidth / img.width;
+                            //console.log(diferenciaEnX);
+                            var height = img.height * diferenciaEnX;
+                            img.setAttribute('class', 'styleInputImg');
+                            //console.log("entre acá");
+                            codigo = "a";
+                            canvas.setAttribute("width", width);
+                            canvas.setAttribute("height", height);
+                            canvas.setAttribute('class', 'styleInputImg');
+                            context = canvas.getContext("2d");
+                            ctx = context;
+                            drawImageProp(ctx, img, 0, 0, document.getElementById("canvas").offsetWidth, document.getElementById("canvas").offsetHeight, -1, -1);     
+                        }
+                        else {
+                            var codigos = this.src;
+                            //console.log(codigos);
+                            width = this.width;
+                            height = this.height;                            
+                            canvas.width = width;
+                            canvas.height = height;
+                            ctx.drawImage(img, (0), (0));   
+                        }
                     }
-                    console.log("soy canvas actualizado  por " + canvas.width);
                     canvas.setAttribute("onclick", "draw(event)");
+                    //console.log(img);
                     inputFile.style.display = 'none';
-                    var btnCancel = document.getElementById('btnCancel');
-                    var btnAccept = document.getElementById('btnContinue');
+                    btnCancel = document.getElementById('btnCancel');
+                    btnAccept = document.getElementById('btnContinue');
                     btnAccept.disabled = false;
                     btnCancel.disabled = false;
-                    btnCancel.setAttribute("onclick", "location.href='../Pages/LatentModule.html'");
-                    btnAccept.setAttribute("onclick", "location.href='../Pages/LatentResult.html'");
+                    var mario = "mario";
+                    //console.log("spy señected" + selectedOption.value);
+                    //console.log("hola " + img.src);
+                    //pasarVariables();
+                    //variables = selectedOption.value + "," + selectedSide.value + "," + img + ","
+                      //  + arrayX + "," + arrayY + "," + listX1 + "," + listX2 + "," + listY1 + "," + listY2;
+                    //console.log("soy variables: " + variables);
+                    //var nuevaPag = pasarVariables('LatentResult.html', variables);
+                    //var nuevaPag = pasarVariables('LatentResult.html');
+                    //console.log("soy nueva" + nuevaPag);
+                    btnCancel.setAttribute("onclick", "location.href='../Pages/LatentReport.html'");
+                    //btnAccept.setAttribute("onclick", "location.href='" + nuevaPag + "'");
+                    //btnAccept.setAttribute("onclick", pasarVariables());
+                    
                 }
+            }
+
+            function pasarVariables(/*pagina,nombres*/) {
+                var pagina = 'LatentResult.html';
+                pagina += '?';
+                variables = selectedOption.value + "," + selectedSide.value + "," + img.currentSrc + ","
+                    + listX1 + "," + listX2 + "," + listY1 + "," + listY2;
+                console.log("soy var" + variables);
+                nomVec = variables.split(",");
+                for (i = 0; i < nomVec.length; i++)
+                    pagina += "x" + [i] + "=" + nomVec[i]/*escape(eval(nomVec[i]))*/ + "&";
+                pagina = pagina.substring(0, pagina.length - 1);
+                var enc = encodeURI(pagina);
+                console.log(pagina);
+                //location.href = pagina;
+                //btnCancel.setAttribute("onclick", "location.href='../Pages / LatentReport.html'");
+                //btnAccept.setAttribute("onclick", "location.href='" + pagina + "'");
+                return enc;
             }
             
             window.addEventListener('load', init, false);
+
 
             function mostrarImagenDos() {
                 canvas.style.display = "block";
@@ -172,7 +291,33 @@
                     //var img = new Image();
                     img.src = src;
                     img.onload = function () {
-                        ctx.drawImage(img, (0), (0));
+                        if (document.getElementById("lienzo").offsetWidth < img.width) {
+                            var width = document.getElementById("lienzo").offsetWidth;
+                            var diferenciaEnX = document.getElementById("lienzo").offsetWidth / img.width;
+                            console.log(diferenciaEnX);
+                            var height = img.height * diferenciaEnX;
+                            img.setAttribute('class', 'styleInputImg');
+
+                            //console.log(this.src);
+                            src = this.src;
+                            canvas.setAttribute("width", width);
+                            canvas.setAttribute("height", height);
+                            canvas.setAttribute('class', 'styleInputImg');
+                            context = canvas.getContext("2d");
+                            ctx = context;
+                            //ctx.setAttribute('class', 'styleInputImg');
+
+                            //console.log(ctx);
+                            //ctx.scale(width,height);
+
+                            //ctx.drawImage(img, (0), (0));
+                            drawImageProp(ctx, img, 0, 0, document.getElementById("canvas").offsetWidth, document.getElementById("canvas").offsetHeight, -1, -1);
+                        }
+                        else {
+                            ctx.drawImage(img, (0), (0));
+                        }
+
+
                         dibujarMinutias();
                     }
                 }
@@ -222,6 +367,7 @@
                     context.moveTo(listX1[i], listY1[i]);
                     context.lineTo(listX2[i], listY2[i]);
                     context.stroke();
+                    
                 }
             }
 
@@ -270,6 +416,9 @@
                     listY1.push(y1);
                     listX2.push(x2);
                     listY2.push(y2);
+                    var nuevaPag = pasarVariables();
+                    btnAccept.setAttribute("onclick", "location.href='" + nuevaPag + "'");
+                    //btnAccept.setAttribute("onclick", pasarVariables());
                 }
             }
             //borra el canvas por completo
