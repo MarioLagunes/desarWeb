@@ -9,6 +9,7 @@
         <link href="../Pages/styleResponsive.css" rel="stylesheet" type="text/css" />
     </head>
     <body onload="crearCanvas()">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <div class="topnav" id="myTopNav">
             <a href="../Pages/home.html" class="active"><img class="imagen" src="../imgs/home.png" /> Home</a>
             <div class="dropdown">
@@ -21,8 +22,8 @@
                     <a href="#">---</a>
                     <a href="#">---</a>
                     <a href="#">---</a>
-                    <a href="../Pages/LatentModule.html">Latent Identification</a>
-                    <a href="../Pages/LatentReport.html">Report</a>
+                    <a href="../PrintVerification.aspx">Latent Identification</a>
+                    <a href="../conexioBD.aspx">Report</a>
                 </div>
             </div>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
@@ -43,7 +44,8 @@
                 <div class="col-6"><label class="positionLabel" for="region">Region:</label></div>
                 <div class="col-6">
                     <select class="positionOptions" id="region" name="region" required>
-                        <option value="thumb" default>Thumb</option>
+                        <option value="--" default>--</option>
+                        <option value="thumb">Thumb</option>
                         <option value="index">Index</option>
                         <option value="middle">Middle</option>
                         <option value="ring">Ring</option>
@@ -58,8 +60,9 @@
         <div class="row">
             <div class="col-6"><label class="positionLabelSide" for="side">Side:</label></div>
             <div class="col-6">
-                <select class="positionSide" id="side" name="side" required>
-                    <option value="right" default>Right</option>
+                <select class="positionSide" id="side" name="side" required disabled>
+                    <option value="--" default>--</option>
+                    <option value="right">Right</option>
                     <option value="left">Left</option>
                     <option value="both">Both</option>
                 </select>
@@ -72,7 +75,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <input class="styleInput" id="inputFile1" type="file">
+                <input class="styleInput" id="inputFile1" type="file" disabled>
             </div>
         </div>
 
@@ -96,16 +99,23 @@
                 }
                 context = canvas.getContext("2d");
                 var region = document.getElementById('region');
+                var side = document.getElementById('side');
                 region.addEventListener('change',
                     function () {
                         selectedOption = this.options[region.selectedIndex];
+                        side.disabled = false;
                         //console.log(selectedOption.value + ': ' + selectedOption.text);
                     });
-                var side = document.getElementById('side');
                 side.addEventListener('change', function () {
                     selectedSide = this.options[side.selectedIndex];
+                    inputFile.disabled = false;
                     //console.log(selectedSide.value + ': ' + selectedSide.text);
                 });
+            }
+
+            function myFuncion(imagenRuta) {
+                var cadena = imagenRuta;
+                $.post("/Home/Nombre", { texto: cadena }, function () { alert('imagen Cargada') });
             }
 
             var posx;
@@ -139,7 +149,7 @@
             var btnAccept;
 
             function init() {
-                
+
                 inputFile.addEventListener('change', mostrarImagen, false);
             }
 
@@ -168,7 +178,7 @@
                     nh = ih * r,   /// new prop. height
                     cx, cy, cw, ch, ar = 1;
 
-                /// decide which gap to fill    
+                /// decide which gap to fill
                 if (nw < w) ar = w / nw;
                 if (nh < h) ar = h / nh;
                 nw *= ar;
@@ -203,10 +213,10 @@
                     var reader = new FileReader();
                     codigo = "hola";
                     reader.onload = function (event) {
-                        
+
                         img.src = event.target.result;
                         console.log(img.src);
-                        
+
                     }
                     reader.readAsDataURL(file);
                     img.onload = function () {
@@ -218,22 +228,24 @@
                             var height = img.height * diferenciaEnX;
                             img.setAttribute('class', 'styleInputImg');
                             //console.log("entre acá");
+                            myFuncion(this.src);
                             codigo = "a";
                             canvas.setAttribute("width", width);
                             canvas.setAttribute("height", height);
                             canvas.setAttribute('class', 'styleInputImg');
                             context = canvas.getContext("2d");
                             ctx = context;
-                            drawImageProp(ctx, img, 0, 0, document.getElementById("canvas").offsetWidth, document.getElementById("canvas").offsetHeight, -1, -1);     
+                            drawImageProp(ctx, img, 0, 0, document.getElementById("canvas").offsetWidth, document.getElementById("canvas").offsetHeight, -1, -1);
                         }
                         else {
                             var codigos = this.src;
+                            myFuncion(this.src);
                             //console.log(codigos);
                             width = this.width;
-                            height = this.height;                            
+                            height = this.height;
                             canvas.width = width;
                             canvas.height = height;
-                            ctx.drawImage(img, (0), (0));   
+                            ctx.drawImage(img, (0), (0));
                         }
                     }
                     canvas.setAttribute("onclick", "draw(event)");
@@ -248,7 +260,7 @@
                     //console.log("hola " + img.src);
                     //pasarVariables();
                     //variables = selectedOption.value + "," + selectedSide.value + "," + img + ","
-                      //  + arrayX + "," + arrayY + "," + listX1 + "," + listX2 + "," + listY1 + "," + listY2;
+                    //  + arrayX + "," + arrayY + "," + listX1 + "," + listX2 + "," + listY1 + "," + listY2;
                     //console.log("soy variables: " + variables);
                     //var nuevaPag = pasarVariables('LatentResult.html', variables);
                     //var nuevaPag = pasarVariables('LatentResult.html');
@@ -256,30 +268,58 @@
                     btnCancel.setAttribute("onclick", "location.href='../Pages/LatentReport.html'");
                     //btnAccept.setAttribute("onclick", "location.href='" + nuevaPag + "'");
                     //btnAccept.setAttribute("onclick", pasarVariables());
-                    
+
                 }
             }
 
             function pasarVariables(/*pagina,nombres*/) {
-                var pagina = 'LatentResult.html';
-                pagina += '?';
-                variables = selectedOption.value + "," + selectedSide.value + "," + img.currentSrc + ","
-                    + listX1 + "," + listX2 + "," + listY1 + "," + listY2;
-                console.log("soy var" + variables);
-                nomVec = variables.split(",");
-                for (i = 0; i < nomVec.length; i++)
-                    pagina += "x" + [i] + "=" + nomVec[i]/*escape(eval(nomVec[i]))*/ + "&";
-                pagina = pagina.substring(0, pagina.length - 1);
-                var enc = encodeURI(pagina);
-                console.log(pagina);
-                //location.href = pagina;
-                //btnCancel.setAttribute("onclick", "location.href='../Pages / LatentReport.html'");
-                //btnAccept.setAttribute("onclick", "location.href='" + pagina + "'");
-                return enc;
-            }
-            
-            window.addEventListener('load', init, false);
+                if (selectedOption.value == "--" && selectedSide.value == "--") {
+                    alert("Please select a different value for Region and Side.");
+                }
+                else if (selectedOption.value == "--" && selectedSide.value != "--") {
+                    alert("Please select a different value for Region");
+                }
+                else if (selectedOption.value != "--" && selectedSide.value == "--") {
+                    alert("Please select a different value for Side");
+                }
+                else {
+                    var pagina = 'LatentResult.html';
+                    pagina += '?';
+                    variables = selectedOption.value + "," + selectedSide.value + "," + img + ","
+                        + listX1 + "," + listX2 + "," + listY1 + "," + listY2;
+                    console.log("soy var" + variables);
+                    nomVec = variables.split(",");
+                    for (i = 0; i < nomVec.length; i++)
+                        pagina += "x" + [i] + "=" + nomVec[i]/*escape(eval(nomVec[i]))*/ + "&";
+                    pagina = pagina.substring(0, pagina.length - 1);
+                    var enc = encodeURI(pagina);
+                    console.log(pagina);
+                    //location.href = pagina;
+                    //btnCancel.setAttribute("onclick", "location.href='../Pages / LatentReport.html'");
+                    //btnAccept.setAttribute("onclick", "location.href='" + pagina + "'");
+                    return enc;
+                }
 
+                
+            }
+
+            window.addEventListener('load', init, false);
+            var raiz = "C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation"
+            function WriteFile() {
+                console.log("entrooooooo aquiiiiiiiii perroooooo");
+                var fso, tf;
+
+                fso = new ActiveXObject("Scripting.FileSystemObject");
+                tf = fso.CreateTextFile(raiz + "archprueEscr.txt", true);
+                // Escribir una línea con un carácter de nueva línea.
+                tf.WriteLine("Probando 1, 2, 3.");
+                // Escribir tres caracteres de nueva línea en el archivo.
+                tf.WriteBlankLines(3);
+                // Escribir una línea.
+                tf.Write("Esto es una prueba de escritura.");
+                tf.Close();
+                window.location.reload()
+            }
 
             function mostrarImagenDos() {
                 canvas.style.display = "block";
@@ -300,6 +340,7 @@
 
                             //console.log(this.src);
                             src = this.src;
+
                             canvas.setAttribute("width", width);
                             canvas.setAttribute("height", height);
                             canvas.setAttribute('class', 'styleInputImg');
@@ -367,7 +408,7 @@
                     context.moveTo(listX1[i], listY1[i]);
                     context.lineTo(listX2[i], listY2[i]);
                     context.stroke();
-                    
+
                 }
             }
 
@@ -417,6 +458,7 @@
                     listX2.push(x2);
                     listY2.push(y2);
                     var nuevaPag = pasarVariables();
+                    console.log(nuevaPag);
                     btnAccept.setAttribute("onclick", "location.href='" + nuevaPag + "'");
                     //btnAccept.setAttribute("onclick", pasarVariables());
                 }

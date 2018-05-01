@@ -58,3 +58,10 @@ C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre
 C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\obj\Debug\LatentIdentifcation.csproj.CoreCompileInputs.cache
 C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\obj\Debug\LatentIdentifcation.dll
 C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\obj\Debug\LatentIdentifcation.pdb
+C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\FR.Core.dll
+C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\FR.MatchingSDK.dll
+C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\FR.SourceAFISWrapper.dll
+C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\ImageProcessingTools.dll
+C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\MathNet.Numerics.dll
+C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\SHullDelaunayTriangulation.dll
+C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\SourceAFIS.dll
