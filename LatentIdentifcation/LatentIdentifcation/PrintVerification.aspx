@@ -90,7 +90,7 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <button class="styleInputCon" id="btnContinuePlease" disabled="disabled" Visible="false">Continue</button>
+            <button class="styleInputCon" id="btnContinuePlease" disabled="disabled" visible="false">Continue</button>
         </div>
     </div>
     <script>
@@ -123,7 +123,7 @@
 
          function myFuncion(imagenRuta) {
              var cadena = imagenRuta;
-             $.post("/Home/Nombre", { texto: cadena }, function () { alert('imagen Cargada') });
+             $.post("/Home/Nombre", { texto: cadena }, function () {  });
          }
 
          var posx;
@@ -250,7 +250,7 @@
          }
 
          function pasarVariables() {
-                 var pagina = '../Pages/LatentResult.html';
+                 var pagina = '../LatentResultFinal.aspx';
                  pagina += '?';
                  variables = selectedOption.value + "," + selectedSide.value + "," + listX1 + "," + listX2 + "," + listY1 + "," + listY2;
                  nomVec = variables.split(",");

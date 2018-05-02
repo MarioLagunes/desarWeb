@@ -179,6 +179,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LatentResultFinal.aspx.cs">
+      <DependentUpon>LatentResultFinal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LatentResultFinal.aspx.designer.cs">
+      <DependentUpon>LatentResultFinal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\EncodeBase64.cs" />
     <Compile Include="Models\Verification.cs" />
     <Compile Include="Pages\Class1.cs" />
@@ -205,6 +212,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="LatentResultFinal.aspx" />
     <Content Include="Pages\home.html" />
     <Content Include="Pages\LatentModule.html" />
     <Content Include="Pages\LatentReport.html" />
