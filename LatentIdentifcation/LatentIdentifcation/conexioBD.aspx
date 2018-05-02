@@ -43,7 +43,7 @@
             <div class="col-12">
                 <asp:gridview class="gridNAME" runat="server" AutoGenerateColumns="False" DataKeyNames="IDUSUARIO" DataSourceID="SqlDataSource2" BackColor="#9AB2CE" HorizontalAlign="Center" OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged" CssClass="alienarCentro" >
                     <Columns>
-                        <asp:BoundField DataField="IDUSUARIO" HeaderText="IDUSUARIO" InsertVisible="False" ReadOnly="True" SortExpression="IDUSUARIO" ItemStyle-CssClass="alinearCentroCeldas" />    
+                        <asp:BoundField DataField="IDUSUARIO" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="IDUSUARIO" ItemStyle-CssClass="alinearCentroCeldas" />    
                         <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" SortExpression="NOMBRE" ItemStyle-CssClass="alinearCentroCeldas" />
                         <asp:BoundField DataField="Column1" HeaderText="SEARCHES" SortExpression="Column1" ReadOnly="True" ItemStyle-CssClass="alinearCentroCeldas" />
                         <asp:BoundField DataField="Column2" HeaderText="MATCHES" SortExpression="Column2" ReadOnly="True"  ItemStyle-CssClass="alinearCentroCeldas" />
@@ -74,11 +74,11 @@
         <script>
 
             function Cancelar() {
-                location = "../Pages/LatentModule.html";
+                location = "../PrintVerification.aspx";
             }
 
             function Aceptar() {
-                location = "../Pages/LatentModule.html";
+                location = "../PrintVerification.aspx";
             }
         </script>
        

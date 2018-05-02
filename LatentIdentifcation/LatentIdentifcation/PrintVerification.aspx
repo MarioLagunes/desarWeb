@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="../Pages/styleResponsive.css" rel="stylesheet" type="text/css" />
     
-    <link rel="stylesheet" type="text/css" href="~/ext_tools/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="~/ext_tools/font-awesome/css/font-awesome.min.css" />
-    <script type="text/javascript" src="~/ext_tools/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="~/ext_tools/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body onload="crearCanvas()">
@@ -91,13 +90,7 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <form id="form1" runat="server" data-toggle="validator">
-                <div class="col-sm-8">
-                        <p class="text-right">
-                            <asp:Button ID="Verify" runat="server" Text="Verify" class="btn btn-lg btn-primary" OnClick="Verify_Click" />
-                        </p>
-                </div>
-            </form>
+            <button class="styleInputCon" id="btnContinuePlease" disabled="disabled" Visible="false">Continue</button>
         </div>
     </div>
     <script>
@@ -160,6 +153,8 @@
          var height = 0;
          var btnCancel;
          var btnAccept;
+         var btnContinuePlease;
+         var srcImagenCargada;
 
          function init() {
              inputFile.addEventListener('change', mostrarImagen, false);
@@ -215,6 +210,7 @@
                  codigo = "hola";
                  reader.onload = function (event) {
                      img.src = event.target.result;
+                     srcImagenCargada = event.target.result;
                  }
                  reader.readAsDataURL(file);
                  img.onload = function () {
@@ -269,14 +265,15 @@
 
          window.addEventListener('load', init, false);
 
-         var raiz = "C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation"
+         var raiz = "C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation";
 
          function mostrarImagenDos() {
              canvas.style.display = "block";
              document.getElementById("canvas").style.overflowY = "hidden";
              var ctx = context;
              if (ctx) {
-                 img.src = src;
+                 var img = new Image();
+                 img.src = srcImagenCargada;
                  img.onload = function () {
                      if (document.getElementById("lienzo").offsetWidth < img.width) {
                          var width = document.getElementById("lienzo").offsetWidth;
@@ -391,22 +388,28 @@
          }
          function validacionDatos() {
              if (selectedOption.value == "--") {
-                 console.log("puto");
                  alert("Change the value of region!");
              }
              else if (selectedSide.value == "--") {
-                 console.log("maricon");
                  alert("Change the value of Side");
              }
              else if (selectedOption.value == "--" && selectedSide.value == "--") {
-                 console.log("pinche homosexual");
                  alert("Change the value of Region and Side");
              }
+             else if (listX1.length == 0) {
+                 alert("Draw at least one minutia");
+             }
              else {
-                 btnAccept.disabled = false;
+                 var regionCmbs = document.getElementById("region");
+                 var sideCmbs = document.getElementById("side");
+                 btnContinuePlease = document.getElementById("btnContinuePlease");
+                 btnContinuePlease.disabled = false;
+                 btnAccept.disabled = true;
+                 regionCmbs.disabled = true;
+                 sideCmbs.disabled = true;
                  var nuevaPag = pasarVariables();
                  console.log("hola Mario: " + nuevaPag);
-                 //btnAccept.setAttribute("onclick", "location.href='" + nuevaPag + "'");
+                 btnContinuePlease.setAttribute("onclick", "location.href='" + nuevaPag + "'");
              }
              
          }

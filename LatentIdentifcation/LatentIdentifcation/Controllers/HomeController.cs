@@ -20,8 +20,14 @@ namespace LatentIdentifcation.Controllers
         {
             string text = texto;
 
-            System.IO.File.WriteAllText(@"C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\archivo.txt", text);
+            System.IO.File.WriteAllText(@"C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\Pages\archivo.txt", text);
         }
+
+        /*[HttpGet]
+        public void Ruta(string ruta)
+        {
+            string rut = System.IO.File.ReadAllText(@"C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\archivo.txt");
+        }*/
 
         /*public ActionResult HacerAlgo()
         {

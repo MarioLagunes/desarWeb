@@ -28,9 +28,9 @@ namespace LatentIdentifcation
             var ResponseSt = ComputeVerification().Split(':');
             var result = ResponseSt[0];
             Console.Write(result);
-            var msgResult = ResponseSt[1].Replace("\"", "");
+            //var msgResult = ResponseSt[1].Replace("\"", "");
 
-            lbResult.Text = msgResult;
+            //lbResult.Text = msgResult;
             lbResult.Visible = Visible;
             lbResultImg.Visible = Visible;
 
@@ -38,19 +38,19 @@ namespace LatentIdentifcation
             {
                 lbResultImg.Text = "<i class='fa fa-2x fa-check-square-o'></i> Match";
                 lbResultImg.Attributes["class"] = "alert-success btn-lg";
-                lbResult.Attributes["class"] = "";
+                //lbResult.Attributes["class"] = "";
             }
             if (result.Contains("Error"))
             {
                 lbResultImg.Text = "Error";
                 lbResultImg.Attributes["class"] = "alert-danger btn-lg";
-                lbResult.Attributes["class"] = "alert-danger btn-lg";
+                //lbResult.Attributes["class"] = "alert-danger btn-lg";
             }
             if (result.ToLowerInvariant().Contains("false"))
             {
                 lbResultImg.Text = "<i class='fa fa-2x fa-times'></i> No Match";
                 lbResultImg.Attributes["class"] = "alert-warning btn-lg";
-                lbResult.Attributes["class"] = "";
+                //lbResult.Attributes["class"] = "";
             }
         }
 

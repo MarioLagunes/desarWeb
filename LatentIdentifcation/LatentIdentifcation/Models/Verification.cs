@@ -31,7 +31,9 @@ namespace LatentIdentifcation.Models
             if (!_keys.Contains(_key))
                 return "Error: Your key is invalid";
 
-            return IsThereMatch(_template, _query);
+            //return IsThereMatch(_template, _query);
+            VerificarHuellaMil(_template);
+            return "sisepudowe";
         }
 
         private string IsThereMatch(string template, string query)
@@ -62,6 +64,27 @@ namespace LatentIdentifcation.Models
             var result = CreateOutput(verificationResult);
 
             return result;
+        }
+
+        private void VerificarHuellaMil(string template)
+        {
+            //Tuple<double, List<MinutiaPair>> verificationResult;
+            using (var t = EncodeBase64.Base64ToImage(template))
+            {
+                MatchingSDK matchingSDK = new MatchingSDK();
+                var tBmp = new Bitmap(t);
+                var queryImg = ImageLoader.LoadImage(@"C:\Users\Mario Prueba\Pictures\F0000001_Query.jpg");
+                var queryMtiaList = matchingSDK.ExtractMinutaeFromFingerprint(tBmp);
+                var templateMtiaList = matchingSDK.ExtractMinutaeFromFingerprint(queryImg);
+                var queryMTripletsFeature = matchingSDK.BuildMtripletsFeature(queryMtiaList);
+                var templateMTripletsFeature = matchingSDK.BuildMtripletsFeature(templateMtiaList);
+                var verificationResult = matchingSDK.MatchLantentPrint(queryMTripletsFeature, templateMTripletsFeature);
+                Console.WriteLine("Showing the result in a console app");
+                Console.WriteLine($"Matching similarity: {verificationResult.Item1}\nMatching minutiae count: {verificationResult.Item2.Count}");
+            }
+            //var result = CreateOutput(verificationResult);
+
+            //return result;
         }
 
         private string CreateOutput(Tuple<bool, List<MinutiaPair>> matchResult)

@@ -19,11 +19,11 @@ namespace LatentIdentifcation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbResult.Visible = false;
-            lbResultImg.Visible = false;
+            //lbResult.Visible = false;
+            //lbResultImg.Visible = false;
         }
 
-        protected void Verify_Click(object sender, EventArgs e)
+        /*protected void Verify_Click(object sender, EventArgs e)
         {
             var ResponseSt = ComputeVerification().Split(':');
             var result = ResponseSt[0];
@@ -84,6 +84,6 @@ namespace LatentIdentifcation
             response.Close();
             newStream.Close();
             return ResponseSt;
-        }
+        }*/
     }
 }

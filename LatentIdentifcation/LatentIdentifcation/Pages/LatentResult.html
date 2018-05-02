@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="../Pages/styleResponsive.css" rel="stylesheet" type="text/css" />
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     </head>
     <body>
         <div class="topnav" id="myTopNav">
@@ -85,79 +85,53 @@
             var sid = "";
             var regionCmb = document.getElementById("regionOptions");
             var sideCmb = document.getElementById("sideOptions");
-            var src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZ8AAAFNCAAAAAD6fz1sAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAWDGSURBVHjaJP3ZjmTZliAH7nk6kw5m7h5xI7PIItDg7/aXNdDoJ5IoZGXeGxHuZqaqZ9rzWqsf6l1+ QUT4 / 7vW1ti325EOmh/b9tf0Ns6Kl79f3F0nQVD// LTT9 + 99TWx+uw6srFtKdvZW9OcT9e3aC7XnK3bl3fTb2 / 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";
             var img;
             var lX1 = [];
             var lX2 = [];
             var lY1 = [];
             var lY2 = [];
 
-            
-            // var foo = getParameterByName('foo');
             var dec = decodeURI(location.search);
+            var context;
+            var listaX1 = [];
+            var listaX2 = [];
+            var listaY1 = [];
+            var listaY2 = [];
+
+            llenarListas(dec, 2, listaX1, listaX2, listaY1, listaY2);
             cadVariables = dec.substring(1, dec.length);
-            var nuevaFunct = getParameterByName("x3");
-            console.log(nuevaFunct);
-            console.log("Soy x6 : " + nuevaFunct);
-            console.log("soy " + cadVariables);
-            arrVariables = cadVariables.split("&");
-            console.log(arrVariables.length);
-            for (i = 0; i < arrVariables.length; i++) {
-                arrVariableActual = arrVariables[i].split("=");
-                console.log(arrVariableActual[i]);
-                if (i == 0) {
-                    regio = arrVariableActual[0];
-                    //console.log(regio);
-                }
-                else if (i == 1) {
-                    sid = arrVariableActual[1];
-
-                    //console.log(sid);
-                }
-                else if (i == 2) {
-                    img = arrVariableActual[2];
-
-                    //console.log(img);
-                }
-                else if (i == 3) {
-                    lX1 = arrVariableActual[3];
-                    console.log(lX1);
-                }
-                else if (i == 4) {
-                    lX2 = arrVariableActual[4];
-                    console.log(lX2);
-                }
-                else if (i == 5) {
-                    lY1 = arrVariableActual[5];
-                    console.log(lY1);
-                }
-                else if (i == 6) {
-                    lY2 = arrVariableActual[6];
-                    console.log(lY2);
-                }
-                //if (isNaN(parseFloat(arrVariableActual[1])))
-                // eval(arrVariableActual[0] + "='" + unescape(arrVariableActual[1]) + "';");
-                //else
-                //eval(arrVariableActual[0] + "=" + arrVariableActual[1] + ";");
-            }
-            //console.log(nuevoQuery.get("x0"));
+            var regionMil = getParameterByName("x0");
+            var sideMil = getParameterByName("x1");
+            regio = regionMil;
+            sid = sideMil;
             console.log("regio " + regio);
             console.log("side " + sid);
-            //console.log("url " + src);
-            console.log("ly1 = " + lY1);
             var miOptionRegion = document.createElement("option");
             miOptionRegion.text = regio;
-            //miOptionRegion.value = regio;
             regionCmb.add(miOptionRegion);
             var miOptionSide = document.createElement("option");
             miOptionSide.text = sid;
-            //miOptionSide.value = sid;
             sideCmb.add(miOptionSide);
-            var imagens = src;
+            //var imagens = src;
             var canvas;
             var ctx;
             var img = new Image();
             crearCanvas();
+
+            function llenarListas(string, Xinicial, x1, x2, y1, y2) {
+                var listaDeListas = [x1, x2, y1, y2];
+                var elementosEnString = string.split("&x");
+                elementosEnString = (elementosEnString.length - Xinicial) / 4;
+                //console.log("numero de x es: " + elementosEnString);
+                var cadenaX = "x" + Xinicial.toString();
+                for (i = 0; i < 4; i++) {
+                    for (k = 0; k < elementosEnString; k++) {
+                        listaDeListas[i].push(parseFloat(getParameterByName(cadenaX)));
+                        Xinicial++;
+                        var cadenaX = "x" + Xinicial.toString();
+                    }
+                }
+            }
 
             function getParameterByName(name, url) {
                 if (!url) url = window.location.href;
@@ -179,23 +153,20 @@
                 if (typeof G_vmlCanvasManager != 'undefined') {
                     canvas = G_vmlCanvasManager.initElement(canvas);
                 }
-                canvas.style.display = "block";
-                document.getElementById("canvas").style.overflowY = "hidden";
-                var urls = "";
-                if (canvas.getContext) {
-                    ctx = canvas.getContext('2d');
-                }
+                context = canvas.getContext("2d");
+                document.getElementById("canvas").style.overflow = "hidden";
+                getRutaMil();
                 
             }
 
             function dibujarMinutias() {
-                for (var i = 0; i < lX1.length; i++) {
+                for (var i = 0; i < listaX1.length; i++) {
                     //dibujar circulos:
                     context.fillStyle = 'rgba(255, 0, 0, 0.1)';
                     context.strokeStyle = 'rgba(255, 0, 0, 1)';
                     context.lineWidth = 3;
                     context.beginPath();
-                    context.arc(lX1[i], lY1[i], 6, 0, 2 * Math.PI);
+                    context.arc(listaX1[i], listaY1[i], 6, 0, 2 * Math.PI);
                     context.fill();
                     context.stroke();
 
@@ -203,31 +174,52 @@
                     context.lineWidth = 3;
                     context.strokeStyle = "#f00";
                     context.beginPath();
-                    context.moveTo(lX1[i], lY1[i]);
-                    context.lineTo(lX2[i], lY2[i]);
+                    context.moveTo(listaX1[i], listaY1[i]);
+                    context.lineTo(listaX2[i], listaY2[i]);
                     context.stroke();
 
                 }
             }
 
-            function drawImage(valor) {
-                if (ctx) {
+            var raizita = "";
+            var ruts;
+            var txt;
+            function getRutaMil() {
+                //ruts = $.get("/Home/Ruta", function () { alert('ohh si bb') });
+                //console.log(ruts);
+                var arrayData = new Array();
+                var archivoTxt = new XMLHttpRequest();
+                var fileRuta = "archivo.txt";
+                console.log("soy fil: " + fileRuta);
+                archivoTxt.open("GET", fileRuta, false);
+                archivoTxt.send(null);
+                txt = archivoTxt.responseText;
+                console.log(txt);
+            }
+            
 
+            function drawImage(valor) {
+                if (context) {
                     if (valor == 'minutiaOriginal') {
-                        img.src = src;
+                        img.src = txt;
                         img.onload = function () {
                             width = this.width;
                             height = this.height;
                             canvas.width = width;
                             canvas.height = height;
-                            //ctx.drawImage(img, (0), (0));
+                            context.drawImage(img, (0), (0));
+                            dibujarMinutias();
+                            context = canvas.getContext("2d");
 
                         }
                         document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter"> </label>';
                         ponBotonesDisabled();
-                        dibujarMinutias();
+                        
                     }
                     else if (valor == 'optionOne') {
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.style.display = "block";
+                        document.getElementById("canvas").style.overflowY = "hidden";
                         img.src = "../imgs/minutiaMatch.png";
                         console.log("soy imageng " + img.src);
                         img.onload = function () {
@@ -236,7 +228,8 @@
                             canvas.width = width;
                             canvas.height = height;
                             //document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src=""/>';
-                            ctx.drawImage(img, (0), (0));
+                            context.drawImage(img, (0), (0));
+                            context = canvas.getContext("2d");
                         }
                         document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter">Mario Lagunes Nava, 22 years old.</label>';
                         ponBotones();
