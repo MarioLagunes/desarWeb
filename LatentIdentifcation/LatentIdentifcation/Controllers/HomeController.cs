@@ -20,7 +20,7 @@ namespace LatentIdentifcation.Controllers
         {
             string text = texto;
 
-            System.IO.File.WriteAllText(@"C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\Pages\archivo.txt", text);
+            System.IO.File.WriteAllText(@"C:\Users\Daniel\Documents\8o semestre\archivo.txt", text);
         }
 
         /*[HttpGet]

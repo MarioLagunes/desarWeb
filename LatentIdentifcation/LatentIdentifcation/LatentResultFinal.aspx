@@ -198,19 +198,80 @@
                 archivoTxt.send(null);
                 txt = archivoTxt.responseText;
                 console.log(txt);
-            }
-            
+			}
+			//funcion que dibuja una imagen de forma responsiva
+			function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
+				if (arguments.length === 2) {
+					x = y = 0;
+					w = ctx.canvas.width;
+					h = ctx.canvas.height;
+				}
+				/// default offset is center
+				offsetX = typeof offsetX === 'number' ? offsetX : 0.5;
+				offsetY = typeof offsetY === 'number' ? offsetY : 0.5;
+				/// keep bounds [0.0, 1.0]
+				if (offsetX < 0) offsetX = 0;
+				if (offsetY < 0) offsetY = 0;
+				if (offsetX > 1) offsetX = 1;
+				if (offsetY > 1) offsetY = 1;
+				var iw = img.width,
+					ih = img.height,
+					r = Math.min(w / iw, h / ih),
+					nw = iw * r,   /// new prop. width
+					nh = ih * r,   /// new prop. height
+					cx, cy, cw, ch, ar = 1;
+				/// decide which gap to fill
+				if (nw < w) ar = w / nw;
+				if (nh < h) ar = h / nh;
+				nw *= ar;
+				nh *= ar;
+				/// calc source rectangle
+				cw = iw / (nw / w);
+				ch = ih / (nh / h);
+				cx = (iw - cw) * offsetX;
+				cy = (ih - ch) * offsetY;
+				/// make sure source rectangle is valid
+				if (cx < 0) cx = 0;
+				if (cy < 0) cy = 0;
+				if (cw > iw) cw = iw;
+				if (ch > ih) ch = ih;
+				/// fill image in dest. rectangle
+				ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
+			}
+
+			function dibujarImagen() {
+				if (document.getElementById("lienzo").offsetWidth < img.width) {
+					var width = document.getElementById("lienzo").offsetWidth;
+					var diferenciaEnX = document.getElementById("lienzo").offsetWidth / img.width;
+					var height = img.height * diferenciaEnX;
+					img.setAttribute('class', 'styleInputImg');
+					myFunction(this.src);
+					//codigo = "a";
+					canvas.setAttribute("width", width);
+					canvas.setAttribute("height", height);
+					canvas.setAttribute('class', 'styleInputImg');
+					context = canvas.getContext("2d");
+					
+					drawImageProp(context, img, 0, 0, document.getElementById("canvas").offsetWidth, document.getElementById("canvas").offsetHeight, -1, -1);
+					return true;
+				}
+				return false;
+				
+			}
 
             function drawImage(valor) {
                 if (context) {
                     if (valor == 'minutiaOriginal') {
                         img.src = txt;
                         img.onload = function () {
-                            width = this.width;
-                            height = this.height;
-                            canvas.width = width;
-                            canvas.height = height;
-                            context.drawImage(img, (0), (0));
+                            
+							if (!dibujarImagen()){
+								width = this.width;
+								height = this.height;
+								canvas.width = width;
+								canvas.height = height;
+								context.drawImage(img, (0), (0));
+							}
                             dibujarMinutias();
                             context = canvas.getContext("2d");
 
@@ -226,12 +287,15 @@
                         img.src = "../imgs/minutiaMatch.png";
                         console.log("soy imageng " + img.src);
                         img.onload = function () {
-                            width = this.width;
-                            height = this.height;
-                            canvas.width = width;
-                            canvas.height = height;
-                            //document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src=""/>';
-                            context.drawImage(img, (0), (0));
+                            
+							if(!dibujarImagen()){
+								width = this.width;
+								height = this.height;
+								canvas.width = width;
+								canvas.height = height;
+								context.drawImage(img, (0), (0));
+							}
+							document.getElementById('resultadoImagen').innerHTML = '<img class="imagenResult" src=""/>';
                             context = canvas.getContext("2d");
                         }
                         document.getElementById('infoMatch').innerHTML = '<label class="positionNombreCenter">Mario Lagunes Nava, 22 years old.</label>';

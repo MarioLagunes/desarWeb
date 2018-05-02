@@ -46,26 +46,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FR.Core">
-      <HintPath>..\..\..\FR.MatchingSDK\FR.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\FR.MatchingSDK\FR.Core.dll</HintPath>
     </Reference>
     <Reference Include="FR.MatchingSDK">
-      <HintPath>..\..\..\FR.MatchingSDK\FR.MatchingSDK.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\FR.MatchingSDK\FR.MatchingSDK.dll</HintPath>
     </Reference>
     <Reference Include="FR.SourceAFISWrapper">
-      <HintPath>..\..\..\FR.MatchingSDK\FR.SourceAFISWrapper.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\FR.MatchingSDK\FR.SourceAFISWrapper.dll</HintPath>
     </Reference>
     <Reference Include="ImageProcessingTools">
-      <HintPath>..\..\..\FR.MatchingSDK\ImageProcessingTools.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\FR.MatchingSDK\ImageProcessingTools.dll</HintPath>
     </Reference>
     <Reference Include="MathNet.Numerics">
-      <HintPath>..\..\..\FR.MatchingSDK\MathNet.Numerics.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\FR.MatchingSDK\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SHullDelaunayTriangulation">
-      <HintPath>..\..\..\FR.MatchingSDK\SHullDelaunayTriangulation.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\FR.MatchingSDK\SHullDelaunayTriangulation.dll</HintPath>
     </Reference>
     <Reference Include="SourceAFIS">
-      <HintPath>..\..\..\FR.MatchingSDK\SourceAFIS.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Downloads\FR.MatchingSDK\SourceAFIS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

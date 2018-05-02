@@ -65,3 +65,40 @@ C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre
 C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\MathNet.Numerics.dll
 C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\SHullDelaunayTriangulation.dll
 C:\Users\Mario Prueba\Documents\Mis cosas\Tecnológico de Monterrey\8vo Semestre\Desarrollo web\DesaProyecto\LatentIdentifcation\LatentIdentifcation\bin\SourceAFIS.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\obj\Debug\LatentIdentifcation.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\obj\Debug\LatentIdentifcation.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\LatentIdentifcation.dll.config
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\LatentIdentifcation.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\LatentIdentifcation.pdb
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\FR.Core.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\FR.MatchingSDK.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\FR.SourceAFISWrapper.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\ImageProcessingTools.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\MathNet.Numerics.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\Newtonsoft.Json.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\SHullDelaunayTriangulation.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\SourceAFIS.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Net.Http.Formatting.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Helpers.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Http.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Http.WebHost.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Mvc.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Optimization.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Razor.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.WebPages.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.WebPages.Razor.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\Newtonsoft.Json.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Net.Http.Formatting.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Helpers.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Http.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Http.WebHost.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Mvc.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Optimization.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.Razor.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.WebPages.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\bin\System.Web.WebPages.Razor.xml
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\obj\Debug\LatentIdentifcation.dll
+C:\Users\Daniel\Documents\8o semestre\Aplicaciones web\proyectos_git3\desarWeb\LatentIdentifcation\LatentIdentifcation\obj\Debug\LatentIdentifcation.pdb
